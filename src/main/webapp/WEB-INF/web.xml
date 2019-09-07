@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>tg</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 过滤器  解决表单post提交乱码问题 -->
+  <filter>
+  	<filter-name>encoding</filter-name>
+  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encoding</filter-name>
+  	<!-- 拦截全部 /* -->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+  <!-- static resources -->
+<servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>*.css</url-pattern>
+  <url-pattern>*.js</url-pattern>
+  <url-pattern>*.jpeg</url-pattern>
+</servlet-mapping>
+    <!-- 配置springmvc前端控制器 和读取配置文件 -->
+  <servlet>
+  	<servlet-name>springmvc</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<!-- 读取配置文件 -->
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:springmvc.xml</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>springmvc</servlet-name>
+  	<!-- / -->
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 
+  url-pattern有5种配置模式：
+（1）/xxx:完全匹配/xxx的路径
+（2）/xxx/*:匹配以/xxx开头的路径，请求中必须包含xxx。
+（3）/*：匹配/下的所有路径,请求可以进入到action或controller，但是转发jsp时再次被拦截，不能访问jsp界面。
+（4）.xx:匹配以xx结尾的路径，所有请求必须以.xx结尾，但不会影响访问静态文件。
+（5）/:默认模式，未被匹配的路径都将映射到刺servlet，对jpg，js，css等静态文件也将被拦截，不能访问。
+   -->
+  
+</web-app>
