@@ -30,21 +30,21 @@
 1.MySQL设置用户名为root，密码为123，也可自行修改数据库配置文件。 <br>
 2.配置项目buildpath为jdk1.8。 <br>
 3.配置Maven到环境变量中。 <br>
-4.我使用的是热部署到本地服务器的方式，且更改了我的服务器端口号，请注意修改。
-5.安装mysql并创建数据库，创建表并添加数据。数据库建表语句在根目录createTable.sql文件中，运行项目时注意删除 <br>
+4.我使用的是热部署到本地服务器的方式，且更改了我的服务器端口号，请注意修改。 <br>
+5.安装mysql并创建数据库，创建表并添加数据。数据库建表语句在根目录createTable.sql文件中，运行项目时注意删除。 <br>
 
 五、运行截图
 ---
 1.登录界面
-! + [登录] + (https://github.com/angel-of-java/SSM-BookAppointment/master/images/login.png)
+! + [登录] + (https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/login.png)
 2.索引界面
-! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/master/images/index.png)
+! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/index.png)
 3.图书列表界面
-! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/master/images/bookList.png)
+! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/bookList.png)
 4.图书详情界面
-! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/master/images/detail.png)
+! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/detail.png)
 5.已预约图书列表
-! + [登录] + (https://github.com/angel-of-java/SSM-BookAppointment/master/images/appointmentList.png)
+! + [登录] + (https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/appointmentList.png)
 
 五、欢迎大家参与改善项目并与我交流沟通
 ---
