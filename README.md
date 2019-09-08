@@ -36,7 +36,7 @@
 五、运行截图
 ---
 1.登录界面
-!+[登录]+(https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/login.png)
+!+[登录]+(https://raw.githubusercontent.com/angel-of-java/SSM-BookAppointment/master/images/login.png)
 2.索引界面
 ! + [索引] + (https://github.com/angel-of-java/SSM-BookAppointment/raw/master/images/index.png)
 3.图书列表界面
