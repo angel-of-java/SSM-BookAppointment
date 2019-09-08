@@ -29,7 +29,7 @@ public class Controller {
 	@Autowired
 	private AppointmentService as;
 	
-	//不用修改
+	//登陆系统
 	@RequestMapping("login")
 	public String login(Model model,HttpServletRequest request) {
 		//当传过来的账号或密码不能转化为long型数据时，捕捉错误
@@ -51,14 +51,13 @@ public class Controller {
 		}
 	}
 	
-	//不用修改
 	//登陆后进行跳转，防止刷新后重复提交表单
 	@RequestMapping("goIndex")
 	public String goIndex() {
 		return "index";
 	}
 	
-	//
+	//图书详细信息
 	@RequestMapping("detail")
 	public String detail(long bookId, HttpServletRequest request, Model model) {
 		Book book = bs.getBookById(bookId);
@@ -82,7 +81,7 @@ public class Controller {
 		return "detail";
 	}  
 	
-	//不用修改
+	//查找图书
 	@RequestMapping("search")
 	public String search(String name,Model model) {		
 		List<Book> books = bs.getBookByName(name);
@@ -90,18 +89,19 @@ public class Controller {
 		return "list";
 	}
 	
-	//不用修改
+	//预约图书
 	@RequestMapping("appoint")
 	public String appoint(HttpServletRequest request, Model model) {		
 		Student student = (Student)request.getSession().getAttribute("student");
 		long studentId = student.getStudentId();
 		long bookId = Long.parseLong(request.getParameter("bookId"));
 		as.appoint(bookId, studentId);
+		//可预约数量减一
 		bs.updateAppiontNo(bookId);
 		return "appointSuccess";
 	}
 	
-	//不用修改
+	//图书列表
 	@RequestMapping("bookList")
 	public String bookList(Model model) {
 		List<Book> books = bs.getAllBook();
@@ -109,14 +109,14 @@ public class Controller {
 		return "list";
 	}
 	
-	//不用修改
+	//预约列表
 	@RequestMapping("appointBookList")
 	public String appointBookList(HttpServletRequest request,Model model) {
 		Student student = (Student)request.getSession().getAttribute("student");
 		long studentId = student.getStudentId();
 		List<Appointment> appointList = as.getAppointByStudentId(studentId);
 		model.addAttribute("appointList", appointList);
-		//根据预约的书的bookId查找书的信息，返回到前端预约列表
+		//因为appointment和book是两个表，所以在appointment查找到预约信息时，还需要再用预约信息去book里面查询书的详细信息
 		List<Book> bookList = new ArrayList<Book>();
 		for(int i = 0; i < appointList.size(); i++) {
 			Book book = bs.getBookById(appointList.get(i).getBookId());
@@ -127,7 +127,7 @@ public class Controller {
 		return "appointBookList";
 	}
 	
-	//不用修改
+	//取消预约
 	@RequestMapping("cancelAppoint")
 	public String cancelAppoint(HttpServletRequest request, Model model) {
 		Student student = (Student)request.getSession().getAttribute("student");
@@ -139,7 +139,7 @@ public class Controller {
 		return "forward:detail";
 	}
 	
-	//不用修改
+	//退出登录
 	@RequestMapping("logout")
 	public String logout(HttpServletRequest request) throws Exception {
 	    HttpSession session = request.getSession();
